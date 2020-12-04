@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Login Page</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%- include('partials/_links') %>
+  <title>Messages</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <header>
-      <%- include('partials/_header') %>
-    </header>
-    <main>
-      <div class="container">
-        <div class="text-center">
-          <h1>Messages</h1>
-        </div>
-        <div class="card border-primary mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body text-primary">
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
+  <%- include('partials/_links') %>
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <main id="user-messages">
+    <div class="container">
+      <div class="text-center">
+        <h1>Messages</h1>
       </div>
-    </main>
+      <% if (!messages) { %>
+        <h2>No Messages</h2>
+      <% } else {%>
+        <div class="messages-container">
+          <% for (let message in messages) {%>
+            <div class="card border-primary mb-3" style="max-width: 25rem;">
+              <div class="card-header">RECEIVED MESSAGE</div>
+              <div class="card-body text-primary">
+                <p class="card-text"><h5>Message:</h5> <%= messages[message].content %></p>
+                <p class="card-text"><strong>Buyer:</strong> <%= messages[message].sender_email %></p>
+                <p class="card-text"><strong>Item:</strong> <%= messages[message].name %></p>
+              </div>
+              <div class="card-footer">
+                <form action="/messages/<%= messages[message].id %>/delete" method="POST">
+                  <button id="remove-btn" class="btn btn-secondary" type="submit">Remove</button>
+                </form>
+              </div>
+            </div>
+          <% } %>
+      <% } %>
+        </div>
+    </div>
+  </main>
 
 
-    <!-- Footer & Bootstrap core JavaScript-->
-    <%- include('partials/_footer') %>
+  <!-- Footer & Bootstrap core JavaScript-->
+  <%- include('partials/_footer') %>
 
-  </body>
+</body>
+
 </html>

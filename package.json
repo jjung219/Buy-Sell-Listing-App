@@ -13,22 +13,17 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
-    "@sendgrid/mail": "^7.4.0",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
     "cookie-session": "^1.4.0",
     "dotenv": "^2.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "mailgun-js": "^0.22.0",
     "morgan": "^1.9.1",
     "node-sass-middleware": "^0.11.0",
     "pg": "^6.4.2",
     "pg-native": "^3.0.0",
-    "request": "^2.88.2",
-    "startbootstrap-shop-homepage": "^4.2.3",
-    "twilio": "^3.53.0",
-    "unirest": "^0.6.0"
+    "startbootstrap-shop-homepage": "^4.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
