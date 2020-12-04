@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>My Favourites</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%- include('partials/_links') %>
+  <title>My Favourites</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f4a4038515.js" crossorigin="anonymous"></script>
+  <%- include('partials/_links') %>
 
-  </head>
-  <body>
-  <header>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/f4a4038515.js" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+
+<body>
+    <header>
     <%- include('partials/_header') %>
-  </header>
-  <main>
-    <div class="container">
-      <div class="text-center">
-        <h1>My Favourites</h1>
-      </div>
-      <div class="row">
-        <%  for(let item in itemsArr) { %>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="<%= itemsArr[item].photo_url %>"> </a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"><%= itemsArr[item].name %></a>
-                </h4>
-                <h5>$<%= itemsArr[item].price %></h5>
-                <p class="card-text"><%= itemsArr[item].description %></p>
+    </header>
+    <main id="my-listings">
+      <div class="container">
+        <div id="my-listings-header" class="text-center">
+          <h1>My Listings</h1>
+        </div>
+      <%  for(let item in itemsArr) { %>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="<%= itemsArr[item].photo_url %>"> </a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#"><%= itemsArr[item].name %></a>
+                  </h4>
+                  <h5>$<%= itemsArr[item].price %></h5>
+                  <p class="card-text"><%= itemsArr[item].description %></p>
+                  <h6>Condition: <%= itemsArr[item].condition %></h6>
+                </div>
+                <div class="card-footer">
+                  <% if (itemsArr[item].active) {%>
+                    <span>Available</span>
+                  <%} else {%>
+                    <span style="color: red;">SOLD</span>
+                  <%}%>
+                      <small>
+                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>/delete?redirect=/favourites"><button><i class="fas fa-heart fa-2x"></i></button></form>
+                      </small>
+                </div>
               </div>
-              <span> <button>message</button></span>
-              <div class="card-footer">
-                <small><form method="POST" action="/favourites"><button>favourit</button></form></small>
-                <small>condition = <%= itemsArr[item].condition %></small>
-                <% if (itemsArr[item].active) { %>
-                <small>For Sale</small>
-                <% } else { %>
-                <span style="color: red;">SOLD</span>
-                <% } %>
-              </div>
+            </div>
+            </div>
           </div>
           <% } %>
-      </div>
-    </div>
+        </div>
   </main>
 
 
-    <!-- Footer & Bootstrap core JavaScript-->
-    <%- include('partials/_footer') %>
-  </body>
-</html>
+  <!-- Footer & Bootstrap core JavaScript-->
+  <%- include('partials/_footer') %>
+</body>
 
+</html>

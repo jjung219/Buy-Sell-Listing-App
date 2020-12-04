@@ -1,51 +1,59 @@
- <!-- Navigation -->
- <!DOCTYPE html>
- <html lang="en">
-   <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <meta name="description" content="">
-     <meta name="author" content="">
+<!-- Navigation -->
+<!DOCTYPE html>
+<html lang="en">
 
-     <title>Register Page</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-     <%- include('partials/_links') %>
+  <title>Register Page</title>
 
-     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-     <script type="text/javascript" src="/scripts/app.js"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <%- include('partials/_links') %>
 
-   </head>
-   <body>
-    <header>
-      <%- include('partials/_header') %>
-    </header>
-    <main>
-      <div class="container">
-        <div class="text-center">
-          <h1>Register</h1>
-        </div>
-        <form action="/register" method="POST">
-          <div class="form-group">
-            <h5><label for="inputName">Full Name</label></h5>
-            <input type="text" id="inputName" class="form-control" placeholder="e.g. Jone Doe" name="userName"  required autofocus>
-          </div>
-          <div class="form-group">
-            <h5><label for="inputEmail">Email address</label></h5>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="userEmail"  required autofocus>
-          </div>
-          <div class="form-group">
-            <h5><label for="inputPassword">Password</label></h5>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="userPassword" required>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-lg btn-primary" type="submit">Register</button>
-          </div>
-        </form>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <main>
+    <div class="container">
+      <div class="text-center">
+        <h1>Register</h1>
       </div>
-    </main>
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <h5><label for="inputName">Full Name</label></h5>
+          <input type="text" id="inputName" class="form-control" placeholder="e.g. Jone Doe" name="userName" required
+            autofocus>
+        </div>
+        <div class="form-group">
+          <h5><label for="inputEmail">Email address</label></h5>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="userEmail" required
+            autofocus>
+        </div>
+        <div class="form-group">
+          <h5><label for="inputPassword">Password</label></h5>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="userPassword"
+            required>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-lg btn-primary" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </main>
 
-    <!-- Footer & Bootstrap core JavaScript-->
-    <%- include('partials/_footer') %>
-  </body>
+  <!-- Footer & Bootstrap core JavaScript-->
+  <%- include('partials/_footer') %>
+</body>
+
 </html>

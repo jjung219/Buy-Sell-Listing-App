@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>My Listings</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%- include('partials/_links') %>
+  <title>My Listings</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f4a4038515.js" crossorigin="anonymous"></script>
+  <%- include('partials/_links') %>
 
-  </head>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/f4a4038515.js" crossorigin="anonymous"></script>
 
-  <body>
-    <header>
-      <!-- Navigation -->
-      <%- include('partials/_header') %>
-    </header>
+</head>
+
+<body>
+  <header>
+    <!-- Navigation -->
+    <%- include('partials/_header') %>
+  </header>
 
   <!-- My Listings -->
     <main id="my-listings">
@@ -33,10 +36,10 @@
           <% for (let item in items) {%>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<%= items[item].photo_url %>" alt=""></a>
+                <img class="card-img-top" src="<%= items[item].photo_url %>" alt="">
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#"><%= items[item].name %></a>
+                    <%= items[item].name %>
                   </h4>
                   <h5>$<%= items[item].price %></h5>
                   <p class="card-text"><%= items[item].description %></p>
@@ -48,29 +51,24 @@
                   <%} else {%>
                     <span style="color: red;">SOLD</span>
                   <%}%>
-                  <% if (items[item].favorite) {%>
-                    <i class="fas fa-heart fa-2x"></i>
-                  <%} else {%>
-                    <a href=""><i class="far fa-heart fa-2x"></i></a>
-                  <%}%>
                 </div>
                 <div id="listing-btn" class="card-footer">
                   <form action="/listings/<%= item %>/delete" method="POST">
                     <button id="remove-btn" class="btn btn-secondary" type="submit">Remove</button>
                   </form>
-                  <% if (items[item].active) {%>
-                    <form action="/listings/<%= item %>/mark-item" method="POST">
-                      <button id="mark-sold-btn" class="btn btn-primary" type="submit">Mark Sold</button>
-                    </form>
-                  <% } else {%>
-                    <form action="/listings/<%= item %>/mark-item" method="POST">
-                      <button id="mark-available-btn" class="btn btn-outline-primary" type="submit">Mark Available</button>
-                    </form>
-                  <% } %>
-                </div>
-              </div>
+              <% if (items[item].active) {%>
+              <form action="/listings/<%= item %>/mark-item" method="POST">
+                <button id="mark-sold-btn" class="btn btn-primary" type="submit">Mark Sold</button>
+              </form>
+              <% } else {%>
+              <form action="/listings/<%= item %>/mark-item" method="POST">
+                <button id="mark-available-btn" class="btn btn-outline-primary" type="submit">Mark Available</button>
+              </form>
+              <% } %>
             </div>
-          <%}%>
+          </div>
+        </div>
+        <%}%>
 
         </div>
         <!-- /.row -->
@@ -81,5 +79,6 @@
 
     <!-- Footer & Bootstrap core JavaScript-->
     <%- include('partials/_footer') %>
-  </body>
+</body>
+
 </html>

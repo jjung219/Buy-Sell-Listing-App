@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Search</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%- include('partials/_links') %>
+  <title>Search</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </head>
+  <%- include('partials/_links') %>
 
-  <body>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
   <header>
     <!-- Navigation -->
     <%- include('partials/_header') %>
@@ -29,11 +32,12 @@
       <form method="POST" action="/">
         <div class="form-group">
           <h6><label for="item-name">Name</label></h6>
-          <input id ="item-name" type="text" class="form-control" name="item-name" placeholder="Search for item...">
+          <input id="item-name" type="text" class="form-control" name="item-name" placeholder="Search for item...">
         </div>
         <div class="input-group mb-3">
           <h6><label for="minimum-price">Minimum Price: </label></h6>
-          <input id="minimum-price" type="number" class="form-control" name="min-price" aria-label="Dollar amount (with dot and two decimal places)">
+          <input id="minimum-price" type="number" class="form-control" name="min-price"
+            aria-label="Dollar amount (with dot and two decimal places)">
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
             <span class="input-group-text">.00</span>
@@ -41,7 +45,8 @@
         </div>
         <div class="input-group mb-3">
           <h6><label for="maximum-price">Maximum Price: </label></h6>
-          <input id="maximum-price" type="number" class="form-control" name="max-price" aria-label="Dollar amount (with dot and two decimal places)">
+          <input id="maximum-price" type="number" class="form-control" name="max-price"
+            aria-label="Dollar amount (with dot and two decimal places)">
           <div class="input-group-append">
             <span class="input-group-text">$</span>
             <span class="input-group-text">.00</span>
@@ -54,8 +59,9 @@
     </div>
   </main>
 
-    <!-- Footer & Bootstrap core JavaScript-->
-    <%- include('partials/_footer') %>
+  <!-- Footer & Bootstrap core JavaScript-->
+  <%- include('partials/_footer') %>
 
-  </body>
+</body>
+
 </html>

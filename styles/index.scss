@@ -14,4 +14,10 @@ div.col-lg-3 {
   .card-footer.btn {
     justify-content: center;
   }
+
+  small form button {
+    border: none;
+    background-color: inherit;
+    color: #007bff;
+  }
 }

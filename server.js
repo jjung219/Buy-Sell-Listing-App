@@ -63,9 +63,8 @@ const newRoutes = require("./routes/new");
 const removeListingRoutes = require("./routes/my-listings-remove");
 const favouritesRoutes = require("./routes/favourites");
 const markItemRoutes = require("./routes/my-listings-mark-item");
-// const contactRoutes = require("./routes/contact");
 const logoutRoutes = require("./routes/logout");
-
+const removeMessageRoutes = require("./routes/user-messages-remove");
 
 
 // Mount all resource routes
@@ -88,10 +87,10 @@ app.use("/login",loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use("/listings", removeListingRoutes(db));
 app.use("/listings", markItemRoutes(db));
-// app.use("/contact", contactRoutes(db));
 app.use("/logout", logoutRoutes(db));
 app.use("/message",newMessageRoutes(db));
 app.use("/messages",messageRoutes(db));
+app.use("/messages", removeMessageRoutes(db));
 
 
 // Home page
@@ -107,16 +106,16 @@ app.get("/", (req, res) => {
     userId = req.session['user_id']
     items = (result.rows);
     templateVar = { itemsArr: items, user: userId}
-    queryString = `SELECT items.id, favorites.user_id as favorited_by
-    FROM items
-    join favorites on favorites.item_id = items.id
+    queryString = `SELECT item_id
+    FROM favorites
     where favorites.user_id = $1;
     `
     db.query(queryString, [userId])
     .then(result => {
       favouritesIds = result.rows
       templateVar.favourited = false
-      templateVar.favIds = favouritesIds
+      templateVar.favIds = favouritesIds.map(itemFav => itemFav.item_id)
+
       console.log(templateVar)
       res.render('index', templateVar)
     })

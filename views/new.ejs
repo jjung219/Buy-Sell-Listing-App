@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>New Page</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%- include('partials/_links') %>
+  <title>New Page</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <%- include('partials/_links') %>
 
-  </head>
-  <header>
-    <%- include('partials/_header') %>
-  </header>
-  <body>
-    <div class="container">
-      <div class="text-center">
-        <h1>Create New Listing</h1>
-      </div>
-      <form action="/new" method="POST">
-        <div class="form-group">
-          <label for="inputname4">Item</label>
-          <input type="text" class="form-control" id="inputname4" placeholder="Enter item..." name="name">
-        </div>
-        <div class="form-group">
-          <label for="Price4">Price</label>
-          <input type="number" class="form-control" id="Price4" placeholder="Enter price..." name="price">
-        </div>
-        <div class="form-group">
-          <label for="inputImage">Image URL</label>
-          <input type="text" class="form-control" id="inputImage" placeholder="Enter image_url..." name="photo_url">
-        </div>
-        <div class="form-group">
-          <label for="inputcondition">Condition</label>
-          <select id="inputcondition" class="form-control" name="condition">
-            <option selected>Choose...</option>
-            <option>Used</option>
-            <option>New</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="inputDescription">Description</label>
-          <textarea class="form-control" placeholder="Enter description..." name="description" rows="5" name="description"></textarea>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-lg btn-primary">Create</button>
-        </div>
-      </form>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</head>
+<header>
+  <%- include('partials/_header') %>
+</header>
+
+<body>
+  <div class="container">
+    <div class="text-center">
+      <h1>Create New Listing</h1>
     </div>
+    <form action="/new" method="POST">
+      <div class="form-group">
+        <label for="inputname4">Item</label>
+        <input type="text" class="form-control" id="inputname4" placeholder="Enter item..." name="name">
+      </div>
+      <div class="form-group">
+        <label for="Price4">Price</label>
+        <input type="number" class="form-control" id="Price4" placeholder="Enter price..." name="price">
+      </div>
+      <div class="form-group">
+        <label for="inputImage">Image URL</label>
+        <input type="text" class="form-control" id="inputImage" placeholder="Enter image_url..." name="photo_url">
+      </div>
+      <div class="form-group">
+        <label for="inputcondition">Condition</label>
+        <select id="inputcondition" class="form-control" name="condition">
+          <option selected>Choose...</option>
+          <option>Used</option>
+          <option>New</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription">Description</label>
+        <textarea class="form-control" placeholder="Enter description..." name="description" rows="5"
+          name="description"></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
 
 
-    <!-- Footer & Bootstrap core JavaScript-->
-    <%- include('partials/_footer') %>
-  </body>
+  <!-- Footer & Bootstrap core JavaScript-->
+  <%- include('partials/_footer') %>
+</body>
+
 </html>
-
