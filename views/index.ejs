@@ -64,7 +64,7 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="styles/img/logo2.png">
+              <img class="d-block img-fluid" src="img/logo3.png">
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid"
@@ -86,51 +86,16 @@
           </a>
         </div>
 
-        <!-- BOOTSTRAP FIXED -->
-        <!-- <div class="row">
-          <%  for(let item in itemsArr) { %>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="<%= itemsArr[item].photo_url %>"> </a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"><%= itemsArr[item].name %></a>
-                </h4>
-                <h5>$<%= itemsArr[item].price %></h5>
-                <p class="card-text"><%= itemsArr[item].description %></p>
-                <p class="card-text">Condition: <%= itemsArr[item].condition %></p>
-              </div>
-              <div class="card-footer">
-                <% if (itemsArr[item].active) { %>
-                <span>Available</span>
-                <% } else { %>
-                <span style="color: red;">SOLD</span>
-                <% } %>
-                <form method="POST" action="/favourites">
-                  <button><i class="fas fa-heart fa-2x"></i></button>
-                </form>
-              </div>
-              <div class="card-footer btn">
-                <form action="/message/<%= itemsArr[item].id %>">
-                  <button type="submit" class="btn btn-primary">Message</button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <% } %>
-        </div> -->
-        <!-- END -->
-
 
         <!-- NEEED TO FIX BOOTSTRAP -->
-        <%  for(let item in itemsArr) { %>
         <div class="row">
+        <%  for(let item in itemsArr) { %>
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<%= itemsArr[item].photo_url %>"> </a>
+                <img class="card-img-top" src="<%= itemsArr[item].photo_url %>">
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#"><%= itemsArr[item].name %></a>
+                    <%= itemsArr[item].name %>
                   </h4>
                   <h5>$<%= itemsArr[item].price %></h5>
                   <p class="card-text"><%= itemsArr[item].description %></p>
@@ -144,11 +109,11 @@
                     <% } %>
                  <% if (favIds.includes(itemsArr[item].id)) {%>
                       <small>
-                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>/delete"><button><i class="fas fa-heart fa-2x"></i></button></form>
+                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>/delete"><button><i class="fas fa-heart fa-2x" style="color: red;"></i></button></form>
                       </small>
                       <% } else { %>
                       <small>
-                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>"><button><i class="far fa-heart" style="font-size: large;"></i></button></form>
+                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>"><button><i class="far fa-heart" style="font-size: large; color: red"></i></button></form>
                       </small>
                       <% } %>
                 </div>
@@ -157,15 +122,15 @@
                   <button type="submit" class="btn btn-primary">Message</button>
                 </form>
               </div>
-              </div>
             </div>
-              <% } %>
+          </div>
+          <% } %>
               <!-- END -->
 
           </div>
 
 
-
+        </main>
         <!-- Footer & Bootstrap core JavaScript-->
         <%- include('partials/_footer') %>
 </body>

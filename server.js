@@ -2,14 +2,14 @@
 require('dotenv').config();
 
 // Web server config
-const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
-const express    = require("express");
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
 const bodyParser = require("body-parser");
-const sass       = require("node-sass-middleware");
-const app        = express();
+const sass = require("node-sass-middleware");
+const app = express();
 var cookieSession = require('cookie-session');
-const morgan     = require('morgan');
+const morgan = require('morgan');
 var cookieSession = require('cookie-session')
 const { Pool, Client } = require('pg')
 // PG database client/connection setup
@@ -82,14 +82,14 @@ const messageRoutes = require("./routes/user_messages");
 app.use("/register", RegisterRoutes(db));
 app.use("/favourites", favouritesRoutes(db));
 app.use("/widgets", widgetsRoutes(db));
-app.use("/new",newRoutes(db));
-app.use("/login",loginRoutes(db));
+app.use("/new", newRoutes(db));
+app.use("/login", loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use("/listings", removeListingRoutes(db));
 app.use("/listings", markItemRoutes(db));
 app.use("/logout", logoutRoutes(db));
-app.use("/message",newMessageRoutes(db));
-app.use("/messages",messageRoutes(db));
+app.use("/message", newMessageRoutes(db));
+app.use("/messages", messageRoutes(db));
 app.use("/messages", removeMessageRoutes(db));
 
 
@@ -101,26 +101,27 @@ app.get("/", (req, res) => {
   let userId;
   let templateVar = {};
   db
-  .query('SELECT * FROM items')
-  .then(result => {
-    userId = req.session['user_id']
-    items = (result.rows);
-    templateVar = { itemsArr: items, user: userId}
-    queryString = `SELECT item_id
-    FROM favorites
-    where favorites.user_id = $1;
-    `
-    db.query(queryString, [userId])
+    .query('SELECT * FROM items')
     .then(result => {
-      favouritesIds = result.rows
-      templateVar.favourited = false
-      templateVar.favIds = favouritesIds.map(itemFav => itemFav.item_id)
+      userId = req.session['user_id']
+      items = (result.rows);
+      templateVar = { itemsArr: items, user: userId }
+      queryString = `SELECT item_id, users.*
+    FROM favorites
+    JOIN users ON user_id = users.id
+    where favorites.user_id = $1
+    `
+      db.query(queryString, [userId])
+        .then(result => {
+          favouritesIds = result.rows
+          templateVar.favourited = false
+          templateVar.favIds = favouritesIds.map(itemFav => itemFav.item_id)
 
-      console.log(templateVar)
-      res.render('index', templateVar)
+          console.log(templateVar)
+          res.render('index', templateVar)
+        })
     })
-  })
-  .catch(e => console.log(e.stack))
+    .catch(e => console.log(e.stack))
 
 });
 

@@ -14,6 +14,11 @@ VALUES
   ('Alice Blue', 'alice@gmail.com', 'password');
 
 INSERT INTO
+  users(name, email, password)
+VALUES
+  ('Jenny Jung', 'jenny@gmail.com', 'password');
+
+INSERT INTO
   items(
     user_id,
     name,
@@ -88,7 +93,7 @@ VALUES
     'Used'
   ),
 (
-    2,
+    4,
     'old couch',
     'used it for a couple of years',
     'https://images.unsplash.com/photo-1560843300-ce9370f96b56?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTV8fGNvdWNofGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
@@ -96,10 +101,10 @@ VALUES
     'Used'
   );
 
--- INSERT INTO
---   favorites(item_id, user_id)
--- VALUES
--- (1, 2);
+INSERT INTO
+  favorites(item_id, user_id)
+VALUES
+(2, 4);
 
 -- INSERT INTO
 --   favorites(item_id, user_id)
@@ -111,6 +116,6 @@ VALUES
 -- VALUES
 -- (1, 3);
 
-INSERT INTO messages(sender_email,sender_id,receiver_id,content,item_id) VALUES('amy@ymail.com',1,2,'Hello I would like to buy your couch! Where do you live? I can pick it up today!',2);
+INSERT INTO messages(sender_email,sender_id,receiver_id,content,item_id) VALUES('amy@ymail.com',1,4,'Hello I would like to buy your couch! Where do you live? I can pick it up today!',9);
 INSERT INTO messages(sender_email,sender_id,receiver_id,content,item_id) VALUES('alice@gmail.com',2,1,'Hello, is the couch still available?',2);
 INSERT INTO messages(sender_email,sender_id,receiver_id,content,item_id) VALUES('alice@gmail.com',2,1,'Hello',2);

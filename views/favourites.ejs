@@ -30,13 +30,13 @@
     <main id="my-listings">
       <div class="container">
         <div id="my-listings-header" class="text-center">
-          <h1>My Listings</h1>
+          <h1>My Favourites</h1>
         </div>
-      <%  for(let item in itemsArr) { %>
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="<%= itemsArr[item].photo_url %>"> </a>
+        <%  for(let item in itemsArr) { %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src="<%= itemsArr[item].photo_url %>">
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#"><%= itemsArr[item].name %></a>
@@ -51,17 +51,16 @@
                   <%} else {%>
                     <span style="color: red;">SOLD</span>
                   <%}%>
-                      <small>
-                        <form method="POST" action="/favourites/<%= itemsArr[item].id %>/delete?redirect=/favourites"><button><i class="fas fa-heart fa-2x"></i></button></form>
-                      </small>
+                    <small>
+                      <form method="POST" action="/favourites/<%= itemsArr[item].id %>/delete?redirect=/favourites"><button><i class="fas fa-heart fa-2x"></i></button></form>
+                    </small>
                 </div>
-              </div>
-            </div>
             </div>
           </div>
-          <% } %>
+        <% } %>
         </div>
-  </main>
+      </div>
+    </main>
 
 
   <!-- Footer & Bootstrap core JavaScript-->
