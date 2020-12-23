@@ -12,6 +12,7 @@ var cookieSession = require('cookie-session');
 const morgan = require('morgan');
 var cookieSession = require('cookie-session')
 const { Pool, Client } = require('pg')
+const connectionString = 'postgres://pyvxorjzhwfqbc:cb326f74dd15313ea862d136f5a3373a66ce5068eccddaa953d3b203edefc047@ec2-52-22-216-69.compute-1.amazonaws.com:5432/d5n4gugunn9gfl'
 // PG database client/connection setup
 // const { Pool } = require('pg');
 // const dbParams = require('./lib/db.js');
@@ -19,10 +20,7 @@ const { Pool, Client } = require('pg')
 // db.connect();
 
 const db = new Pool({
-  user: 'labber',
-  host: 'localhost',
-  database: 'midterm',
-  password: 'labber',
+  connectionString: connectionString
 })
 db.connect().then(() => console.log('db conected'));
 
