@@ -4,7 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const userId = req.session['user_id'];
-    let templateVars = { items: {} , user: userId};
+    let templateVars = { items: {} };
 
     const queryString = `
       SELECT users.name as user, items.*
