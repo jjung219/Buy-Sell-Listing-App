@@ -33,43 +33,46 @@
           <h1>My Listings</h1>
         </div>
         <div class="row">
-          <% for (let item in items) {%>
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <img class="card-img-top" src="<%= items[item].photo_url %>" alt="">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <%= items[item].name %>
-                  </h4>
-                  <h5>$<%= items[item].price %></h5>
-                  <p class="card-text"><%= items[item].description %></p>
-                  <h6>Condition: <%= items[item].condition %></h6>
-                </div>
-                <div class="card-footer">
-                  <% if (items[item].active) {%>
-                    <span>Available</span>
-                  <%} else {%>
-                    <span style="color: red;">SOLD</span>
-                  <%}%>
-                </div>
-                <div id="listing-btn" class="card-footer">
-                  <form action="/listings/<%= item %>/delete" method="POST">
-                    <button id="remove-btn" class="btn btn-secondary" type="submit">Remove</button>
-                  </form>
-              <% if (items[item].active) {%>
-              <form action="/listings/<%= item %>/mark-item" method="POST">
-                <button id="mark-sold-btn" class="btn btn-primary" type="submit">Mark Sold</button>
-              </form>
-              <% } else {%>
-              <form action="/listings/<%= item %>/mark-item" method="POST">
-                <button id="mark-available-btn" class="btn btn-outline-primary" type="submit">Mark Available</button>
-              </form>
-              <% } %>
+          <% if (!items) {%>
+            <h3> No Listings yet! </h3>
+          <% } else {%>
+            <% for (let item in items) {%>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                  <img class="card-img-top" src="<%= items[item].photo_url %>" alt="">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <%= items[item].name %>
+                    </h4>
+                    <h5>$<%= items[item].price %></h5>
+                    <p class="card-text"><%= items[item].description %></p>
+                    <h6>Condition: <%= items[item].condition %></h6>
+                  </div>
+                  <div class="card-footer">
+                    <% if (items[item].active) {%>
+                      <span>Available</span>
+                    <%} else {%>
+                      <span style="color: red;">SOLD</span>
+                    <%}%>
+                    </div>
+                  <div id="listing-btn" class="card-footer">
+                    <form action="/listings/<%= item %>/delete" method="POST">
+                      <button id="remove-btn" class="btn btn-secondary" type="submit">Remove</button>
+                    </form>
+                <% if (items[item].active) {%>
+                <form action="/listings/<%= item %>/mark-item" method="POST">
+                  <button id="mark-sold-btn" class="btn btn-primary" type="submit">Mark Sold</button>
+                </form>
+                <% } else {%>
+                <form action="/listings/<%= item %>/mark-item" method="POST">
+                  <button id="mark-available-btn" class="btn btn-outline-primary" type="submit">Mark Available</button>
+                </form>
+                <% } %>
+              </div>
             </div>
           </div>
-        </div>
-        <%}%>
-
+          <% } %>
+        <% } %>
         </div>
         <!-- /.row -->
 
